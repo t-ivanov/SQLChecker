@@ -276,8 +276,10 @@ public class IOUtil {
 		String comment = "";
 		StringBuffer cleanedSQL = new StringBuffer();
 		//Get Text(SQL and comments) of exercise
-		Pattern p = Pattern.compile("(?m)(?:#|--).*|(/\\*[\\w\\W]*?(?=\\*/)\\*/)");
+		//Pattern p = Pattern.compile("(?m)(?:#|--).*|(/\\*[\\w\\W]*?(?=\\*/)\\*/)");
 		//find all comments which have the tags '#' or '--' or '/* Comment */'
+		// remove # from the list of possible comment tags
+        	Pattern p = Pattern.compile("(?m)(--).*|(/\\*[\\w\\W]*?(?=\\*/)\\*/)");
 		Matcher mComment = p.matcher(newSQL);
 		
 		while (mComment.find()) {
